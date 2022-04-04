@@ -1,0 +1,23 @@
+https://auth.pingone.com/9d8e668f-65af-4b45-a27b-1b0279aac1bd/as/authorize?response_type=token id_token&client_id=90777dea-7a5a-486f-88bf-13a18ae7b657&redirect_uri=https://decoder.pingidentity.cloud/implicit&scope=openid enCustomScope&nonce=123
+
+----
+
+https://api.singularkey.com/v1/auth/9d8e668f-65af-4b45-a27b-1b0279aac1bd/authorize?client_id=FumagU5IrooVBsahUjECUOz7UR3AufMc&redirect_uri=https://auth.pingone.com/9d8e668f-65af-4b45-a27b-1b0279aac1bd/rp/callback/openid_connect&state=0340f39a-5363-421b-bed0-09776268fe60&response_type=code&scope=openid profile&acr_values=policyId-fyLytEIQ35icbHLeVQBjREEVzyoKBUj9&nonce=0340f39a-5363-421b-bed0-09776268fe60
+
+https://auth.pingone.com/c1baa57b-22e6-48b5-826f-60aaca714103/as/authorize?client_id=2adf542c-69f4-4bc7-8ff5-d03366df6067&redirect_uri=https://decoder.pingidentity.cloud/oidc&response_type=code&scope=openid enCustomScope
+
+https://auth.pingone.com/c1baa57b-22e6-48b5-826f-60aaca714103/as/authorize?client_id=2adf542c-69f4-4bc7-8ff5-d03366df6067&redirect_uri=https://decoder.pingidentity.cloud/oidc&response_type=code&scope=openid enCustomScope
+
+
+https://appleid.apple.com/auth/authorize?client_id=com.evernote.profile.ping.dev&redirect_uri=https://api.singularkey.com/v1/auth/9d8e668f-65af-4b45-a27b-1b0279aac1bd/oauth2/callback&scope=openid%20name%20email&response_type=code&response_mode=form_post&state=
+
+https://auth.pingone.com/9d8e668f-65af-4b45-a27b-1b0279aac1bd/as/authorize?response_type=token id_token&client_id=90777dea-7a5a-486f-88bf-13a18ae7b657&redirect_uri=https://decoder.pingidentity.cloud/implicit&scope=openid enCustomScope&nonce=123
+
+https://api.singularkey.com/v1/auth/9d8e668f-65af-4b45-a27b-1b0279aac1bd/oauth2/callback
+https://api.singularkey.com/v1/auth/9d8e668f-65af-4b45-a27b-1b0279aac1bd/oauth2/callback
+
+
+https://decoder.pingidentity.cloud/implicit
+
+https://appleid.apple.com/auth/authorize?client_id=com.evernote.profile.ping.dev&redirect_uri=https://api.singularkey.com/v1/auth/9d8e668f-65af-4b45-a27b-1b0279aac1bd/oauth2/callback&scope=openid%20name%20email&response_type=code&response_mode=form_post&state=
+

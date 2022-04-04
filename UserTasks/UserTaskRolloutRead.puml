@@ -1,0 +1,27 @@
+@startuml
+
+start
+fork
+  :Existing UserStore flow;
+  if (UserStore read enabled?) then (true)
+    :Poll tasks and\nprocess them;
+  else (false)
+    stop
+  endif
+fork again
+  :New GDB flow;
+  if (GDB read enabled?) then (true)
+    :Poll tasks and\nprocess them;
+    :Delete tasks\nfrom GDB;
+    if (Shadow write to\nUserStore enabled?) then (false)
+      stop
+    else (true)
+    endif
+  else (false)
+    stop
+  endif
+end fork
+:Delete tasks\nfrom UserStore;
+stop
+
+@enduml

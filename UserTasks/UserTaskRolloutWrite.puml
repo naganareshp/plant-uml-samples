@@ -1,0 +1,16 @@
+@startuml
+
+start
+:Insert usertask;
+if (Actual write GDB?) then (true)
+  :Write to GDB;
+  if (Shadow write UserStore?) then (false)
+    stop
+  else (true)
+  endif
+else (false)
+endif
+:Write to UserStore;
+stop
+
+@enduml

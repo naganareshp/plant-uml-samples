@@ -1,0 +1,25 @@
+@startuml
+group New UserTask Flow on
+    Monolith -> PubSub : Publish task on queue
+    PubSub -> Monolith : Poll the tasks in batch at regular interval
+    loop For each task
+      Monolith <-> DataStore : Check if it's duplicate. If yes, skip it,\notherwise process it and insert a record
+      Monolith <-> MonolithDB : Persists the changes in monolith DB
+      Monolith -> PubSub : Send acknowledgement
+    end
+end
+group New UserTask Flow off
+    Monolith -> MonolithDB : Insert task in user_tasks table
+    MonolithDB -> Monolith : Poll the tasks in batch at regular interval
+    loop For each task
+      Monolith <-> MonolithDB : Persists the changes in monolith DB after processing
+    end
+    note over Monolith, MonolithDB: In order to preserve data where we need to switch from new to old flow in prod,\nthe following flow will need to be enabled to process the data in the PubSub queue\n\nThere'll be separate config for this temporary processing
+    PubSub -> Monolith : Poll the tasks in batch at regular interval
+    loop For each task
+      Monolith <-> DataStore : Check if it's duplicate. If yes, skip it,\notherwise process it and insert a record
+      Monolith <-> MonolithDB : Persists the changes in monolith DB
+      Monolith -> PubSub : Send acknowledgement
+    end
+end
+@endum\ bv

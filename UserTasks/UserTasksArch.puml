@@ -1,0 +1,27 @@
+@startuml
+
+cloud "PubSub" {
+  [Immediate Topic]
+  [Scheduled Topic]
+}
+
+frame "Monolith Service" as MS {
+  [UserTasks Publisher] --> [Immediate Topic]
+  [UserTasks Publisher] --> [Scheduled Topic]
+  [ImmediateTask Subscriber]
+  [ScheduledTask Subscriber]
+}
+
+[Immediate Topic] --> [ImmediateTask Subscriber] : Poll message delivery\n(every x mins)
+[Scheduled Topic] --> [ScheduledTask Subscriber] : Poll message delivery\n(every y mins)
+
+interface "DataStore Lookup" as DSL
+[ImmediateTask Subscriber] <--> DSL
+[ScheduledTask Subscriber] <--> DSL
+
+DSL <...> [Redis]
+DSL <...> [Couchbase]Evernote
+
+note right of DSL: Possible options for deduplication
+
+@enduml

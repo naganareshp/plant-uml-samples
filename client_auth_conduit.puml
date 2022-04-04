@@ -1,0 +1,90 @@
+@startuml auth-flows
+title Conduit Auth Flows (with Boron)
+
+alt App startup
+    Boron->Conduit: subscribe(authStateQuery)
+    Conduit->Boron: notify(authState)
+    alt authState == Authorized
+        Boron->Boron: allow app access
+    else authState != Authorized
+        Boron->Boron: prompt login
+    end
+end
+
+alt Quasar synchonizarion
+    GraphDB->Quasar: doUpsync()
+    Quasar->Quasar: Fetch from backend services
+    alt code: 401 or 403
+        Quasar->GraphDB: AuthError(JWT_AUTH_EXPIRED, token)
+        GraphDB->Revalidaton: refreshAuthToken()
+        note left of Revalidaton: Revalidaton details below
+    else code == 200
+        Quasar->GraphDB: Latest Upsync Date
+    end
+end
+
+alt Revalidaton flow with NAP (refresh token)
+    alt has no NAP data
+        Revalidaton->Revalidaton: recordEvent(Event data)
+        note left of Revalidaton: Event data:\ncategory: account\naction: logout\nlabel: expired
+        Revalidaton->GraphDB: authState = Expired
+    end
+    Revalidaton->ConduitNapAuth: refreshUserToken()
+    ConduitNapAuth->ConduitNapAuth: refresh token in NAP
+    alt on success
+        ConduitNapAuth->Revalidaton: TokenResponse
+        Revalidaton->Revalidaton: recordEvent(Event data)
+        note left of Revalidaton: Event data:\ncategory: account\naction: token-refresh\nlabel: NAP
+        alt if there are no tokens (Monolith or NAP)
+            alt no Monolith token
+                Revalidaton->Revalidaton: recordEvent(Event data)
+                note left of Revalidaton: Event data:\ncategory: account\naction: logout\nlabel: no_monolith_token
+            else no Refresh token
+                Revalidaton->Revalidaton: recordEvent(Event data)
+                note left of Revalidaton: Event data:\ncategory: account\naction: logout\nlabel: no_refresh_token
+            end
+            Revalidaton->Revalidaton: AuthError(AUTH_EXPIRED)
+        end
+    else on error
+        ConduitNapAuth->Revalidaton: AuthError | RetryError | ServiceError
+        note right of Revalidaton: Error handling below
+    end
+
+    alt Refresh token error handling
+        alt AuthError
+            alt ErrorCode == AUTH_EXPIRED
+                Revalidaton->Revalidaton: recordEvent(Event data)
+                note left of Revalidaton: Event data:\ncategory: account\naction: logout\nlabel: expired
+                Revalidaton->Revalidaton: recordMetric(EXPIRED_AUTH_TOKEN)
+                Revalidaton->GraphDB: AuthState = Expired
+                GraphDB->Boron: notify(AuthState)
+            else
+                Revalidaton->Revalidaton: recordMetric(NON_EXPIRED_AUTHERROR)
+                Revalidaton->GraphDB: AuthError
+            end
+        else RetryError | ServiceError
+            alt if is RetryError
+                Revalidaton->Revalidaton: recordEvent(Event data)
+                note left of Revalidaton: Event data:\ncategory: account\naction: logout\nlabel: wrapped_RetryError
+            else if is ServiceError
+                Revalidaton->Revalidaton: recordEvent(Event data)
+                note left of Revalidaton: Event data:\ncategory: account\naction: logout\nlabel: wrapped_ServiceError
+            else if is AuthError
+                note left of Revalidaton: Probably never falls here
+                Revalidaton->Revalidaton: recordEvent(Event data)
+                note left of Revalidaton: Event data:\ncategory: account\naction: logout\nlabel: wrapped_AuthError
+            end
+            Revalidaton->GraphDB: RetryError | ServiceError
+            alt if error is RetryError
+                alt RetryErrorReason == AUTH_UPDATED
+                    note right of GraphDB: TODO: understand this scenario
+                    GraphDB->BackoffManager: reset delay
+                else
+                    GraphDB->BackoffManager: bump delay time
+                    note right of GraphDB: Refresh token will be retried
+                end
+            end
+        end
+    end
+end
+@enduml

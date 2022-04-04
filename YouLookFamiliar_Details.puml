@@ -1,0 +1,24 @@
+@startuml you-look-familiar
+title You look familiar (account linking flow)
+participant Ping_DaVinci
+participant Evernote
+alt There is an existing Evernote account with SIWA openID
+Evernote->Ping_DaVinci: continue login flow as SIWA account already exists
+note left of Evernote: Result should include Evernote user ID so that\nPing can call Evernote with userID for the custom claims.
+else
+    alt SIWA account does not match with any Evernote account (email as well as openID)
+        Evernote->Ping_DaVinci: SIWA registration workflow
+        note right of Ping_DaVinci: should we create user in Ping and then Evernote or vice versa?\n i.e; we need to think of failure scenarios!
+        note right of Ping_DaVinci: May be creating user in Evernote is better as then \nEvernote can act as master of data!.
+    else
+        alt the SIWA openID already associated with another email/pwd account
+            Evernote->Ping_DaVinci: not supported (already linked to another account - auth should fail!)
+            note left of Evernote: actually this does not apply for SIWA as we only link accounts if the emails match.\nBut for SIWG we were supporting account linking that need not match email.\n So, we need this error case to support SIWG.
+        else Evernote email/pwd account exist and not associated with SIWA yet
+            Evernote->Ping_DaVinci: initiate you look familiar flow!
+            note left of Evernote: let the user authenticate with username/pwd\n to get authorization from user to link accounts.
+            note right of Ping_DaVinci: For Gluu we don't link users with 2FA (not implemented)\nWe can do the same to switch over to Ping relatively quickly without 2FA support.
+        end
+    end
+end
+@enduml

@@ -1,0 +1,21 @@
+@startuml you-look-familiar
+title SIWA registration/sign-up
+actor Actor as User
+participant Client
+participant Ping_DaVinci
+participant Evernote
+User->Client: Initiates SIWA
+Client->Ping_DaVinci: SIWA OIDC flow
+Ping_DaVinci->Apple: redirects to apple IDP
+Apple->Client: apple prompts for the user to sign-in
+Client->Apple: user signs in and authorizes EN for SIWA
+Apple->Ping_DaVinci: user is authenticated (openId and email)
+Ping_DaVinci->Evernote: how to proceed (existing account/need linking/registration/error)?
+Evernote->Ping_DaVinci: you look familiar (account linking)
+Ping_DaVinci->Evernote: create user (passes email and openid)
+note right of Ping_DaVinci: when should we create user in Ping?
+note right of Ping_DaVinci: If we are creating after we created user in Evernote\n what if creating user in Ping fails?
+Ping_DaVinci->Evernote: get custom claims for user id
+Evernote->Ping_DaVinci: returns custom claims
+Ping_DaVinci->client: successful and gives access token (JWT)
+@enduml

@@ -1,4 +1,4 @@
-@startuml you-look-familiar
+@startuml
 title SIWA of an existing Evernote user (i.e; either linked or not linked to user name/pwd account)
 actor Actor as User
 participant Client

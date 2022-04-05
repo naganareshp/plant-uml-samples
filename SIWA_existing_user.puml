@@ -14,5 +14,5 @@ Ping_DaVinci->Evernote: how to proceed (existing account/need linking/registrati
 Evernote->Ping_DaVinci: User already exists - returns Evernote user id
 Ping_DaVinci->Evernote: get custom claims for user id
 Evernote->Ping_DaVinci: returns custom claims
-Ping_DaVinci->client: successful and gives access token (JWT)
+Ping_DaVinci->Client: successful and gives access token (JWT)
 @enduml

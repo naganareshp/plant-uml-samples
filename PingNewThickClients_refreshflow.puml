@@ -1,5 +1,6 @@
-@startuml Ping gradual rollout
-title Ping gradual rollout proposal
+@startuml New Ping thick clients refresh flow (not applicable for monolith or clipper)
+
+title New Ping thick clients refresh flow (not applicable for monolith or clipper)
 participant OnlyNewPingThickClients as NewPingThickClients
 participant PingIntegrationService
 participant PingOne as Ping
@@ -10,29 +11,25 @@ alt Refresh Token of thick clients (not applicable for monolith and clipper)
     alt Elegible for Ping
         NewPingThickClients->PingIntegrationService: endpoint with <grant_type=refresh_token>
         note right of NewPingThickClients: we can explicitly call a different endpoint\n to exclude from proxy side phased rollout\n OR pass additional parameter in extras parameter to skip proxy side rollout
-       alt Based on Gluu token (upgrading client with existing SIWA session), or Ping token
         PingIntegrationService->PingIntegrationService: getTokenIssuer(token): Gluu | Ping
-        alt Ping token
+        alt Ping token (ping token refresh flow (AUTH-1810)
             PingIntegrationService->PingIntegrationService: initiates ping token refresh flow (AUTH-1810)
             PingIntegrationService->monolith: get custom claims
             PingIntegrationService->Ping: update corresponding ping user attributes with custom claims
             PingIntegrationService->Ping: get new access token with custom claims
             PingIntegrationService-->NewPingThickClients: return tokens
-        else Gluu token
+        else Gluu token replacement (obtaining ping token from Gluu token (AUTH-1959))
             PingIntegrationService->PingIntegrationService: initiates obtaining ping token from Gluu token flow (AUTH-1959)
             PingIntegrationService->monolith: get custom claims
             PingIntegrationService->Ping: create or update ping user with custom claims as user attributes
             PingIntegrationService->Ping: get access token with custom claims
             PingIntegrationService-->NewPingThickClients: return tokens
         end
-        End
-    else Gluu refresh token
+    else not eligible for Ping (i.e; simply Gluu token refresh flow)
         NewPingThickClients->Gluu: oxAuth token endpoint with <grant_type=refresh_token>
+        note right of NewPingThickClients: send an extra parameter in refresh token payload\n so that its not part of proxy phased rollout plan
         Gluu->NewPingThickClients: token result
     end
 end
-
-
-
 
 @enduml

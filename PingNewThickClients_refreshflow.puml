@@ -1,0 +1,38 @@
+@startuml Ping gradual rollout
+title Ping gradual rollout proposal
+participant OnlyNewPingThickClients as NewPingThickClients
+participant PingIntegrationService
+participant PingOne as Ping
+participant NAPGluu as Gluu
+
+alt Refresh Token of thick clients (not applicable for monolith and clipper)
+    NewPingThickClients->NewPingThickClients: isElegibleForPing()
+    alt Elegible for Ping
+        NewPingThickClients->PingIntegrationService: endpoint with <grant_type=refresh_token>
+        note right of NewPingThickClients: we can explicitly call a different endpoint\n to exclude from proxy side phased rollout\n OR pass additional parameter in extras parameter to skip proxy side rollout
+       alt Based on Gluu token (upgrading client with existing SIWA session), or Ping token
+        PingIntegrationService->PingIntegrationService: getTokenIssuer(token): Gluu | Ping
+        alt Ping token
+            PingIntegrationService->PingIntegrationService: initiates ping token refresh flow (AUTH-1810)
+            PingIntegrationService->monolith: get custom claims
+            PingIntegrationService->Ping: update corresponding ping user attributes with custom claims
+            PingIntegrationService->Ping: get new access token with custom claims
+            PingIntegrationService-->NewPingThickClients: return tokens
+        else Gluu token
+            PingIntegrationService->PingIntegrationService: initiates obtaining ping token from Gluu token flow (AUTH-1959)
+            PingIntegrationService->monolith: get custom claims
+            PingIntegrationService->Ping: create or update ping user with custom claims as user attributes
+            PingIntegrationService->Ping: get access token with custom claims
+            PingIntegrationService-->NewPingThickClients: return tokens
+        end
+        End
+    else Gluu refresh token
+        NewPingThickClients->Gluu: oxAuth token endpoint with <grant_type=refresh_token>
+        Gluu->NewPingThickClients: token result
+    end
+end
+
+
+
+
+@enduml

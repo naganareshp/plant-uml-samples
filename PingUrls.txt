@@ -1,5 +1,43 @@
 https://auth.pingone.com/9d8e668f-65af-4b45-a27b-1b0279aac1bd/as/authorize?response_type=token id_token&client_id=90777dea-7a5a-486f-88bf-13a18ae7b657&redirect_uri=https://decoder.pingidentity.cloud/implicit&scope=openid enCustomScope&nonce=123
 
+// NagaPTestOidcApp
+https://auth.pingone.com/9d8e668f-65af-4b45-a27b-1b0279aac1bd/as/authorize?response_type=token id_token&client_id=1ad0a85c-ad1e-4498-bf93-dbe2d3e657e1&redirect_uri=https://decoder.pingidentity.cloud/implicit&scope=openid enCustomScope&nonce=123
+
+
+https://auth.pingone.com/dfdda74e-ab86-4abc-b3b3-2b241a415c3e/as/authorize?response_type=token id_token&client_id=96d78c4d-3ddd-44c4-a91b-b60ce86414be&redirect_uri=https://decoder.pingidentity.cloud/implicit&scope=openid mono_authn_token&nonce=123
+
+
+https://auth.pingone.com/1a85692b-7b36-4d2f-b84e-a47f5675785b/as/authorize?response_type=token id_token&client_id=dbf5e48d-9d4a-4534-a817-81093a1aacb1&redirect_uri=https://decoder.pingidentity.cloud/implicit&scope=openid mono_authn_token&nonce=123
+
+
+
+https://auth.pingone.com/1a85692b-7b36-4d2f-b84e-a47f5675785b/as/authorize?response_type=token id_token&client_id=36b1a458-e37c-4fdd-badd-9bb980f05855&redirect_uri=https://decoder.pingidentity.cloud/implicit&scope=openid mono_authn_token&nonce=123
+
+
+1333a4da-4746-41f2-888e-431e84e84c0edbf5e48d-9d4a-4534-a817-81093a1aacb1
+
+---
+https://decoder.pingidentity.cloud/implicit#access_token=eyJhbGciOiJSUzI1NiIsImtpZCI6ImRlZmF1bHQifQ.eyJjbGllbnRfaWQiOiIxYWQwYTg1Yy1hZDFlLTQ0OTgtYmY5My1kYmUyZDNlNjU3ZTEiLCJpc3MiOiJodHRwczovL2F1dGgucGluZ29uZS5jb20vOWQ4ZTY2OGYtNjVhZi00YjQ1LWEyN2ItMWIwMjc5YWFjMWJkL2FzIiwiaWF0IjoxNjUyOTA5MTAzLCJleHAiOjE2NTI5MTI3MDMsImF1ZCI6WyJldmVybm90ZVRva2VuIl0sInNjb3BlIjoiZW5DdXN0b21TY29wZSBvcGVuaWQiLCJzdWIiOiI2MWMwYWNhMi1lNjkxLTQ4MzgtYTBmOS0zYjgwMDg5ZDc0YjciLCJzaWQiOiJhNGEwMmM2ZS05YmJmLTQ5N2UtYWI5Yy1iZWEyYjY0OGNkMTUiLCJzb2NpYWxFeHRlcm5hbElkIjoiMDAxMjAzLjI4YmJlOWNjODQ1ZjRlNTU4NDRlOTdlZjU5OGFjNzA3LjE4NDIiLCJtb25vX2F1dGhuX3Rva2VuIjoicG9zdE1hbk1vY2tWYWx1ZTIyIiwiYWNjZXNzVG9rZW5FbkNsYWltMSI6InBvc3RNYW5Nb2NrVmFsdWUxMSIsImVudiI6IjlkOGU2NjhmLTY1YWYtNGI0NS1hMjdiLTFiMDI3OWFhYzFiZCIsIm9yZyI6ImM4M2Q2MDYwLTQ5NDAtNGFkMy1hNzI4LTRhNjYyZjhiZTlmZCJ9.eJUBv8CJV_lPpk0L3-Fw_HHL2dXSsQx7Il23A2uj68AJ--2M-2Y1K81rYBI6ArQx-rk6a6mEOmCj5LVAJJ1i69u9jQneO2mrfuHhTsKzwOHjko_xKzIglHJ-LMtTzbFhycI2Dj7bkFY8-O-1iMvc7mnng3mfk3bn5lE78i_PFvOnP4Gq1F7l-fjAST3eO-8VZQtW74oiZ0gE3aAf89-pk0LVoXSur2ItXKwqhz_ckQpCYQDgBvpaN2DCOOg39fMeOKlNYqcufRGk6P3smVmx1n7XV0mUsXsj4oPYmL0ztESFZdcIpiygfL-8bYnm-krK8ovXNFwr-81vQ5Y5kxzm8Q&token_type=Bearer&expires_in=3600&scope=enCustomScope+openid&id_token=eyJhbGciOiJSUzI1NiIsImtpZCI6ImRlZmF1bHQifQ.eyJpc3MiOiJodHRwczovL2F1dGgucGluZ29uZS5jb20vOWQ4ZTY2OGYtNjVhZi00YjQ1LWEyN2ItMWIwMjc5YWFjMWJkL2FzIiwic3ViIjoibmFnYS50ZWNobmljYWw5M0BnbWFpbC5jb20iLCJhdWQiOiIxYWQwYTg1Yy1hZDFlLTQ0OTgtYmY5My1kYmUyZDNlNjU3ZTEiLCJpYXQiOjE2NTI5MDkxMDMsImV4cCI6MTY1MjkxMjcwMywiYWNyIjoibmFnYVBTaXdhRmxvd3NQb2xpY3kiLCJhbXIiOlsicHdkIl0sImF1dGhfdGltZSI6MTY1MjkwOTEwMywiYXRfaGFzaCI6IldYQ2Q4QlU0SFpERHJ2WXRBYVNsUHciLCJub25jZSI6IjEyMyIsInNpZCI6ImE0YTAyYzZlLTliYmYtNDk3ZS1hYjljLWJlYTJiNjQ4Y2QxNSIsInAxLnVzZXJJZCI6IjYxYzBhY2EyLWU2OTEtNDgzOC1hMGY5LTNiODAwODlkNzRiNyIsImVudiI6IjlkOGU2NjhmLTY1YWYtNGI0NS1hMjdiLTFiMDI3OWFhYzFiZCIsIm9yZyI6ImM4M2Q2MDYwLTQ5NDAtNGFkMy1hNzI4LTRhNjYyZjhiZTlmZCIsInAxLnJlZ2lvbiI6Ik5BIn0.QLl64UHeZiAyHEPWk6wv2wAD4-a2389eazF-aUdsH_4VeK0v-As7dUWhTCLmCqvNYVFcuvXIsxy9wIWftwl0J3FQUGZX7f5oDQrI73Ey9JZgi1ckO1PpAP--ijUkt_5hS0-dpBF-LIi-KZr2v_EF2tHiUIcuwAU455fXNUjICgseOTTdoTTjIUGVCkRDGEtmKsYzDiG2CTQBbL3v_kaimkGRZN1m6W9fN4CnGbwmb8Y3B7tcB__8qv6QcJ1vtPFmdy39xLMpRk3HFXQ_GcNULsbpTZ6Kvj0DP03lIK1pka8xyqT69KeojApEokNut9BC2U01Y7Kwg9KPrYNejXE9Kg
+
+---
+
+
+https://auth.pingone.com/9d8e668f-65af-4b45-a27b-1b0279aac1bd/as/authorize?response_type=token id_token&client_id=1333a4da-4746-41f2-888e-431e84e84c0e&redirect_uri=https://decoder.pingidentity.cloud/implicit&scope=openid enCustomScope&nonce=123
+1333a4da-4746-41f2-888e-431e84e84c0e
+---
+
+https://auth.pingone.com/16015a3b-d611-471e-af4d-23172a8dc74d/as/authorize?response_type=token id_token&client_id=4d6e0bba-6ba9-4dfb-b55b-c9d41789d96e&redirect_uri=https://decoder.pingidentity.cloud/implicit&scope=openid&nonce=123
+
+https://auth.pingone.com/9d8e668f-65af-4b45-a27b-1b0279aac1bd/as/authorize?response_type=code id_token&client_id=1333a4da-4746-41f2-888e-431e84e84c0e&redirect_uri=https://decoder.pingidentity.cloud/implicit&scope=openid enCustomScope&nonce=123
+
+https://auth.pingone.com/9d8e668f-65af-4b45-a27b-1b0279aac1bd/as/authorize?response_type=token id_token&client_id=30ab3332-5551-4e6c-b766-4c239170e747&redirect_uri=https://decoder.pingidentity.cloud/implicit&scope=openid enCustomScope&nonce=123
+
+
+https://auth.pingone.com/9d8e668f-65af-4b45-a27b-1b0279aac1bd/as/authorize?response_type=code%20id_token&client_id=1333a4da-4746-41f2-888e-431e84e84c0e&redirect_uri=https://decoder.pingidentity.cloud/oidc&scope=openid%20enCustomScope&nonce=123
+
+
+https://auth.pingone.com/9d8e668f-65af-4b45-a27b-1b0279aac1bd/as/authorize?response_type=token id_token&client_id=30ab3332-5551-4e6c-b766-4c239170e747&redirect_uri=https://decoder.pingidentity.cloud/implicit&scope=openid&nonce=123
+
 ----
 
 https://api.singularkey.com/v1/auth/9d8e668f-65af-4b45-a27b-1b0279aac1bd/authorize?client_id=FumagU5IrooVBsahUjECUOz7UR3AufMc&redirect_uri=https://auth.pingone.com/9d8e668f-65af-4b45-a27b-1b0279aac1bd/rp/callback/openid_connect&state=0340f39a-5363-421b-bed0-09776268fe60&response_type=code&scope=openid profile&acr_values=policyId-fyLytEIQ35icbHLeVQBjREEVzyoKBUj9&nonce=0340f39a-5363-421b-bed0-09776268fe60
@@ -17,7 +55,26 @@ https://api.singularkey.com/v1/auth/9d8e668f-65af-4b45-a27b-1b0279aac1bd/oauth2/
 https://api.singularkey.com/v1/auth/9d8e668f-65af-4b45-a27b-1b0279aac1bd/oauth2/callback
 
 
+Ping -> foo@gmail.com/bar (user name/pwd)
+
+SIWA -> foo@gmail.com
+
+(Evernote -> call)
+
+
 https://decoder.pingidentity.cloud/implicit
 
 https://appleid.apple.com/auth/authorize?client_id=com.evernote.profile.ping.dev&redirect_uri=https://api.singularkey.com/v1/auth/9d8e668f-65af-4b45-a27b-1b0279aac1bd/oauth2/callback&scope=openid%20name%20email&response_type=code&response_mode=form_post&state=
 
+
+---
+
+{
+  "interactionId": "612c6f5d05b3bdcb2eee62ab227be4493e7cd13abd1b437e6ca18bd2ea60df7e--x1uq1",
+  "interactionToken": "******",
+  "companyId": "1a85692b-7b36-4d2f-b84e-a47f5675785b",
+  "flowId": "c731429a087f5624659bae0106ee6601",
+  "policyId": "60df6ae9de35447cd95d747e35794e1b",
+  "skOpenId": {
+    "client_id": "9bdc159c94d490b30911d475c501aad3"
+}

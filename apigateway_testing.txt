@@ -1,0 +1,16 @@
+curl -i -H "Host: api.preprod3.evernote.com" -H "Authorization: Bearer ${TOKEN}" -H "user-agent: gke2-validation-tools-tests-etn3" https://api.preprod3.evernote.com/api-gw-etn3/v1/health
+HTTP/2 200
+x-powered-by: Express
+content-type: application/json; charset=utf-8
+content-length: 15
+etag: W/"f-RQ8OySFd+KR+AvtJ7qImjtT0D/0"
+date: Fri, 22 Jul 2022 22:44:15 GMT
+x-envoy-upstream-service-time: 2
+server: istio-envoy
+via: 1.1 google
+alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+
+{"status":"UP"}
+
+
+curl -i -H "Host: stage.evernote.com/" -H "Authorization: Bearer ${TOKEN}" -H "user-agent: gke2-validation-tools-tests-etn3" https://stage.evernote.com//api-gw-stage/v1/health

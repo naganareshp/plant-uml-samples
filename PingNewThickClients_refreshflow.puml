@@ -1,6 +1,6 @@
-@startuml New Ping thick clients refresh flow (not applicable for monolith or clipper)
+@startuml Refresh or replace Gluu token - New Ping thick clients refresh flow (not applicable for monolith or clipper)
 
-title New Ping thick clients refresh flow (not applicable for monolith or clipper)
+title Refresh or replace Gluu token - New Ping thick clients refresh flow (not applicable for monolith or clipper)
 participant OnlyNewPingThickClients as NewPingThickClients
 participant PingIntegrationService
 participant PingOne as Ping

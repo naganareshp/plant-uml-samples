@@ -3,6 +3,11 @@ https://auth.pingone.com/9d8e668f-65af-4b45-a27b-1b0279aac1bd/as/authorize?respo
 // NagaPTestOidcApp
 https://auth.pingone.com/9d8e668f-65af-4b45-a27b-1b0279aac1bd/as/authorize?response_type=token id_token&client_id=1ad0a85c-ad1e-4498-bf93-dbe2d3e657e1&redirect_uri=https://decoder.pingidentity.cloud/implicit&scope=openid enCustomScope&nonce=123
 
+// 3f34f1a9-a3f7-41d8-8f83-44c01d6a3717 - en-boron-mac-oidc-app
+https://auth.pingone.com/9d8e668f-65af-4b45-a27b-1b0279aac1bd/as/authorize?response_type=token id_token&client_id=3f34f1a9-a3f7-41d8-8f83-44c01d6a3717&redirect_uri=https://decoder.pingidentity.cloud/implicit&scope=openid mono_authn_token&nonce=123
+
+
+
 
 https://auth.pingone.com/dfdda74e-ab86-4abc-b3b3-2b241a415c3e/as/authorize?response_type=token id_token&client_id=96d78c4d-3ddd-44c4-a91b-b60ce86414be&redirect_uri=https://decoder.pingidentity.cloud/implicit&scope=openid mono_authn_token&nonce=123
 

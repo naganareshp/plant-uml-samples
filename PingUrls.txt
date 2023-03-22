@@ -41,6 +41,8 @@ https://auth.pingone.com/9d8e668f-65af-4b45-a27b-1b0279aac1bd/as/authorize?respo
 https://auth.pingone.com/9d8e668f-65af-4b45-a27b-1b0279aac1bd/as/authorize?response_type=code%20id_token&client_id=1333a4da-4746-41f2-888e-431e84e84c0e&redirect_uri=https://decoder.pingidentity.cloud/oidc&scope=openid%20enCustomScope&nonce=123
 
 
+http://localhost:8080/auth?response_type=code%20id_token&client_id=2c574497-9240-47ee-b419-f8e3cdea2f96&redirect_uri=http://localhost:4000/redirect&scope=openid&nonce=123
+
 https://auth.pingone.com/9d8e668f-65af-4b45-a27b-1b0279aac1bd/as/authorize?response_type=token id_token&client_id=30ab3332-5551-4e6c-b766-4c239170e747&redirect_uri=https://decoder.pingidentity.cloud/implicit&scope=openid&nonce=123
 
 ----
